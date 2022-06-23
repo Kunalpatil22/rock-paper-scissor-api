@@ -12,7 +12,7 @@ git clone https://github.com/Kunalpatil22/rock-paper-scissor-api.git
 
 ```
 PORT=5000
-DB_CONNECT = mongodb://localhost:27017/rock-paper-scissor
+DB_CONNECT = 'mongodb://localhost:27017/rock-paper-scissor'
 ```
 
 > Make sure you have Node.js and MongoDB installed (Alternatively,You can also use MongoDB atlas)
