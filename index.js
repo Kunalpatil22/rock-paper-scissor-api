@@ -1,56 +1,49 @@
 // Importing modules
 const express = require("express");
-// const mongoose = require("mongoose");
 const CalculateResult = require("./CalculateResult");
-
-// Importing Models
-// const Result = require("./models/Result");
 
 // Configuring environment variables
 require("dotenv").config();
 
 // Fetching environment variables
 const PORT = process.env.PORT || 5000;
-// const DB_CONNECT = process.env.DB_CONNECT;
 
-// Configuring database and express server
-// mongoose.connect(DB_CONNECT, () => {
-//   console.log("Database connection established");
-// });
 const app = express();
 
 // JSON Middleware
 app.use(express.json());
 
-// Game data
-// let game_data = [];
-
 // Configuring routes
 app.get("/game/start", (req, res) => {
-  res.send(CalculateResult(req.body));
+  let choice = { 0: "rock", 1: "paper", 2: "scissor" };
+  let results = [];
+  let i = 0;
+  while (i - 1 < 50) {
+    let players = [
+      {
+        player_id: 1,
+        player_choice: choice[Math.round(Math.random() * 2)],
+      },
+      {
+        player_id: 2,
+        player_choice: choice[Math.round(Math.random() * 2)],
+      },
+      {
+        player_id: 3,
+        player_choice: choice[Math.round(Math.random() * 2)],
+      },
+      {
+        player_id: 4,
+        player_choice: choice[Math.round(Math.random() * 2)],
+      },
+    ];
+
+    results.push(CalculateResult(players));
+    console.log(i);
+    i++;
+  }
+  res.send(results);
   res.end();
-  // const resultCount = await Result.count();
-  // if (resultCount < 50) {
-  //   if (game_data.length == 4) {
-  //     const result = new Result({ result: CalculateResult(game_data) });
-  //     result.save((err, doc) => {
-  //       if (err) {
-  //         console.log(err);
-  //       } else {
-  //         console.log(doc);
-  //       }
-  //     });
-  //     game_data = [];
-  //     game_data.push(req.body);
-  //     res.end();
-  //   } else {
-  //     game_data.push(req.body);
-  //     res.end();
-  //   }
-  // } else {
-  //   res.send(await Result.find({}));
-  //   res.end();
-  // }
 });
 
 // Server startup

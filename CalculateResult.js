@@ -3,18 +3,22 @@ module.exports = function CalculateResult(players = []) {
   const result = [
     {
       player_id: 1,
+      player_choice: players[0].player_choice,
       player_points: [],
     },
     {
       player_id: 2,
+      player_choice: players[1].player_choice,
       player_points: [],
     },
     {
       player_id: 3,
+      player_choice: players[2].player_choice,
       player_points: [],
     },
     {
       player_id: 4,
+      player_choice: players[3].player_choice,
       player_points: [],
     },
   ];
